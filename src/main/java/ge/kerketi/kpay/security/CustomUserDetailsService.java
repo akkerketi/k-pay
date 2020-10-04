@@ -1,6 +1,9 @@
 package ge.kerketi.kpay.security;
 
 
+import ge.kerketi.kpay.exception.ResourceNotFoundException;
+import ge.kerketi.kpay.persistence.model.TblUser;
+import ge.kerketi.kpay.persistence.repository.TblUserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,7 +26,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         TblUser tblUser = tblUserRepository.findByUsername(username)
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found with username : " + username)
-        );
+                );
 
         return UserPrincipal.create(tblUser);
     }
@@ -31,7 +34,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserById(Long id) {
         TblUser tblUser = tblUserRepository.findById(id).orElseThrow(
-            () -> new ResourceNotFoundException("User", "id", id)
+                () -> new ResourceNotFoundException("User", "id", id)
         );
 
         return UserPrincipal.create(tblUser);

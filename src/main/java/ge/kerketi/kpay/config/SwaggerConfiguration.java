@@ -1,6 +1,5 @@
 package ge.kerketi.kpay.config;
 
-import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -48,7 +47,7 @@ public class SwaggerConfiguration {
         docket = docket.select()
             .apis(RequestHandlerSelectors.any())
             .paths(regex(DEFAULT_INCLUDE_PATTERN))
-            .paths(Predicates.not(PathSelectors.regex("/error.*")))
+            .paths(PathSelectors.regex("/error.*").negate())
             .build();
 
         return docket;

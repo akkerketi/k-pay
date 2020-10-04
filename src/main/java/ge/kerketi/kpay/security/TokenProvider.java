@@ -1,6 +1,6 @@
 package ge.kerketi.kpay.security;
 
-import ge.redcircle.autoparts.config.AppProperties;
+import ge.kerketi.kpay.config.AppProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
