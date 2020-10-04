@@ -1,6 +1,5 @@
 package ge.kerketi.kpay.persistence.model;
 
-import ge.kerketi.kpay.persistence.model.enums.Channel;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -70,7 +69,7 @@ public class TblTransactionType {
     private boolean requiresAuthorization;
 
     @OneToMany
-    private Collection<Channel> channels;
+    private Collection<TblAccountLockTime> channels;
 
     @OneToMany
     private Collection<TblCustomField> customFields;

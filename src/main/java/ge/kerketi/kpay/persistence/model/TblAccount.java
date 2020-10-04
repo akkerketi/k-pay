@@ -37,4 +37,7 @@ public class TblAccount {
     @OneToOne
     private TblCurrency tblCurrency;
 
+    @OneToOne
+    private TblUser tblUser;
+
 }

@@ -12,8 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -42,9 +40,10 @@ public class TblUser {
     @NotNull
     private Date lastPasswordChangeDate;
 
+    @Column(name = "enabled")
     private boolean enabled;
 
-    @Min(value = 0)
-    @Max(value = 5)
-    private Integer score;
+    @Column(name = "isAdmin")
+    private boolean isAdmin;
+
 }
