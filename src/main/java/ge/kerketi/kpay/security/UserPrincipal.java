@@ -8,14 +8,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class UserPrincipal implements UserDetails {
-    private Long id;
-    private String username;
-    private String password;
-    private Collection<? extends GrantedAuthority> authorities;
-    private Map<String, Object> attributes;
+    private final Long id;
+    private final String username;
+    private final String password;
+    private final Collection<? extends GrantedAuthority> authorities;
 
     public UserPrincipal(Long id, String userName, String password, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
@@ -35,12 +33,6 @@ public class UserPrincipal implements UserDetails {
                 tblUser.getPassword(),
                 authorities
         );
-    }
-
-    public static UserPrincipal create(TblUser tblUser, Map<String, Object> attributes) {
-        UserPrincipal userPrincipal = UserPrincipal.create(tblUser);
-        userPrincipal.setAttributes(attributes);
-        return userPrincipal;
     }
 
     public Long getId() {
@@ -82,9 +74,5 @@ public class UserPrincipal implements UserDetails {
         return authorities;
     }
 
-
-    public void setAttributes(Map<String, Object> attributes) {
-        this.attributes = attributes;
-    }
 
 }

@@ -29,7 +29,7 @@ public class SwaggerConfiguration {
     public static final String DEFAULT_INCLUDE_PATTERN = "/.*";
 
     @Bean
-    public Docket swaggerSpringfoxDocket() {
+    public Docket swaggerSpringFoxDocket() {
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
             .pathMapping("/")
             .apiInfo(ApiInfo.DEFAULT)

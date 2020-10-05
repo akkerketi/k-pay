@@ -1,6 +1,8 @@
 package ge.kerketi.kpay.security;
 
 import ge.kerketi.kpay.config.AppProperties;
+import ge.kerketi.kpay.persistence.model.TblUser;
+import ge.kerketi.kpay.persistence.repository.TblUserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -20,17 +22,20 @@ public class TokenProvider {
 
     private static final Logger logger = LoggerFactory.getLogger(TokenProvider.class);
 
-    private AppProperties appProperties;
+    private final AppProperties appProperties;
+    private final TblUserRepository tblUserRepository;
 
-    public TokenProvider(AppProperties appProperties) {
+    public TokenProvider(AppProperties appProperties, TblUserRepository tblUserRepository) {
         this.appProperties = appProperties;
+        this.tblUserRepository = tblUserRepository;
     }
 
     public String createToken(Authentication authentication) {
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+        TblUser tblUser = tblUserRepository.findByUsername(userPrincipal.getUsername()).get();
 
         Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + appProperties.getAuth().getTokenExpirationMsec());
+        Date expiryDate = new Date(now.getTime() + tblUser.getTblAccount().getTblGroup().getTblAccessSettings().getTokenExpirationMSec());
 
         return Jwts.builder()
                 .setSubject(Long.toString(userPrincipal.getId()))

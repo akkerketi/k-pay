@@ -33,6 +33,9 @@ public class TblAccessSettings {
     @Column(name = "password_policy")
     private String passwordPolicy;
 
+    @Column(name = "token_expiration_msec")
+    private long tokenExpirationMSec;
+
     @Column(name = "password_expires_after")
     private PasswordExpiresAfter passwordExpiresAfter;
 
