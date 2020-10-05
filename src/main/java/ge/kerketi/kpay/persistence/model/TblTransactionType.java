@@ -69,9 +69,6 @@ public class TblTransactionType {
     private boolean requiresAuthorization;
 
     @OneToMany
-    private Collection<TblAccountLockTime> channels;
-
-    @OneToMany
     private Collection<TblCustomField> customFields;
 
     @OneToOne

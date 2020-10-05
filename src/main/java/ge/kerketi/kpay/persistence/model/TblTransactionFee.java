@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "tbl_tranaction_fee")
-public class tbl_transaction_fee {
+public class TblTransactionFee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

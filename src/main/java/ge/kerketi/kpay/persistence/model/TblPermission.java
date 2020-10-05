@@ -20,5 +20,4 @@ public class TblPermission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
 }
