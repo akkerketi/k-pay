@@ -11,21 +11,21 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "tbl_currency")
-public class TblCurrency {
+@Table(name = "tbl_wallet_type")
+public class TblWalletType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "wallet_currency")
+    private String walletCurrency;
 
-    @Column(name = "symbol")
-    private String symbol;
+    @Column(name = "wallet_currency_symbol")
+    private String walletCurrencySymbol;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "wallet_name")
+    private String walletName;
 
-    @Column(name = "pattern")
-    private String pattern;
+    @Column(name = "wallet_show")
+    private boolean walletShow;
 }

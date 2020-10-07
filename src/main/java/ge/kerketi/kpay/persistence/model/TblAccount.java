@@ -31,13 +31,16 @@ public class TblAccount {
     @Column(name = "min_amount")
     private Long minAmount;
 
+    @Column(name = "enabled")
+    private boolean enabled;
+
     @ManyToOne
-    private TblGroup tblGroup;
+    private TblGroup group;
 
     @OneToOne
-    private TblCurrency tblCurrency;
+    private TblWallet wallet;
 
-    @OneToOne
-    private TblUser tblUser;
+    @ManyToOne
+    private TblUser user;
 
 }

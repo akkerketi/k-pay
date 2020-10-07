@@ -12,7 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.Collection;
+import java.util.List;
 
 @Data
 @EqualsAndHashCode
@@ -40,6 +40,6 @@ public class TblAccessSettings {
     private PasswordExpiresAfter passwordExpiresAfter;
 
     @OneToMany
-    private Collection<TblAccountLockTime> accountLockTimes;
+    private List<TblAccountLockTime> accountLockTimes;
 
 }

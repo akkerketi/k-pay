@@ -35,21 +35,21 @@ public class TokenProvider {
         TblUser tblUser = tblUserRepository.findByUsername(userPrincipal.getUsername()).get();
 
         Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + tblUser.getTblAccount().getTblGroup().getTblAccessSettings().getTokenExpirationMSec());
+        Date expiryDate = new Date(now.getTime() + tblUser.getAccounts().get(0).getGroup().getTblAccessSettings().getTokenExpirationMSec());
 
         return Jwts.builder()
-                .setSubject(Long.toString(userPrincipal.getId()))
-                .setIssuedAt(new Date())
-                .setExpiration(expiryDate)
-                .signWith(SignatureAlgorithm.HS512, appProperties.getAuth().getTokenSecret())
-                .compact();
+            .setSubject(Long.toString(userPrincipal.getId()))
+            .setIssuedAt(new Date())
+            .setExpiration(expiryDate)
+            .signWith(SignatureAlgorithm.HS512, appProperties.getAuth().getTokenSecret())
+            .compact();
     }
 
     public Long getUserIdFromToken(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(appProperties.getAuth().getTokenSecret())
-                .parseClaimsJws(token)
-                .getBody();
+            .setSigningKey(appProperties.getAuth().getTokenSecret())
+            .parseClaimsJws(token)
+            .getBody();
 
         return Long.parseLong(claims.getSubject());
     }

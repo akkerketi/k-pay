@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import java.util.Collection;
+import java.util.List;
 
 @Data
 @Entity
@@ -69,7 +69,7 @@ public class TblTransactionType {
     private boolean requiresAuthorization;
 
     @OneToMany
-    private Collection<TblCustomField> customFields;
+    private List<TblCustomField> customFields;
 
     @OneToOne
     private TblAccount fromAccount;
